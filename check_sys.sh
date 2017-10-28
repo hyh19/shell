@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+# 
+# 描述：判断 Linux 发行版本（CentOS、Ubuntu、Debian）和软件包管理方式（yum、apt）
+# 
+# 参考：https://github.com/teddysun/shadowsocks_install/blob/master/haproxy.sh
+#
 
 check_sys() {
     local checkType=$1
@@ -30,14 +35,14 @@ check_sys() {
         systemPackage="yum"
     fi
 
-    if [ ${checkType} == "sysRelease" ]; then
-        if [ "$value" == "$release" ]; then
+    if [ ${checkType} = "sysRelease" ]; then
+        if [ "$value" = "$release" ]; then
             return 0
         else
             return 1
         fi
-    elif [ ${checkType} == "packageManager" ]; then
-        if [ "$value" == "$systemPackage" ]; then
+    elif [ ${checkType} = "packageManager" ]; then
+        if [ "$value" = "$systemPackage" ]; then
             return 0
         else
             return 1
